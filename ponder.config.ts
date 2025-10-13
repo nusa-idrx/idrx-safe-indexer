@@ -1,20 +1,25 @@
 import { createConfig } from "ponder";
 
-import { ExampleContractAbi } from "./abis/ExampleContractAbi";
+import { Safe } from "./abis/Safe";
+import { worldchain } from "viem/chains";
 
 export default createConfig({
+  database: {
+    kind: "postgres" as const,
+    connectionString: process.env.DATABASE_URL || "",
+  },
   chains: {
-    mainnet: {
-      id: 1,
-      rpc: process.env.PONDER_RPC_URL_1!,
+    world: {
+      id: worldchain.id,
+      rpc: process.env.PONDER_RPC_WORLD || "https://worldchain-mainnet.g.alchemy.com/public",
     },
   },
   contracts: {
-    ExampleContract: {
-      chain: "mainnet",
-      abi: ExampleContractAbi,
-      address: "0x0000000000000000000000000000000000000000",
-      startBlock: 1234567,
+    SafeIDRX: {
+      chain: "world",
+      abi: Safe,
+      address: "0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53",
+      startBlock: 20285110,
     },
   },
 });

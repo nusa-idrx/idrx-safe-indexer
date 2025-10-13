@@ -1,6 +1,25 @@
 import { onchainTable } from "ponder";
 
-export const example = onchainTable("example", (t) => ({
-  id: t.text().primaryKey(),
-  name: t.text(),
-}));
+export const SafeMultiSigTransaction = onchainTable(
+  "SafeMultiSigTransaction",
+  (t) => ({
+    id: t.text().primaryKey(),
+    to: t.text(),
+    value: t.bigint(),
+    data: t.text(),
+    mint_to: t.text(),
+    mint_amount: t.bigint(),
+    operationType: t.text(),
+    safeTxGas: t.bigint(),
+    baseGas: t.bigint(),
+    gasPrice: t.bigint(),
+    gasToken: t.text(),
+    refundReceiver: t.text(),
+    signatures: t.text(),
+    additionalInfo: t.text(),
+    nonce: t.bigint(),
+    sender: t.text(),
+    threshold: t.bigint(),
+    txHash: t.text(),
+  })
+);

@@ -21,5 +21,6 @@ export const SafeMultiSigTransaction = onchainTable(
     sender: t.text(),
     threshold: t.bigint(),
     txHash: t.text(),
+    safeTxHash: t.text(),
   })
 );

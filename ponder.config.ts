@@ -11,7 +11,7 @@ export default createConfig({
   chains: {
     world: {
       id: worldchain.id,
-      rpc: process.env.PONDER_RPC_WORLD || "https://worldchain-mainnet.g.alchemy.com/public",
+      rpc: process.env.PONDER_RPC_WORLD || "https://worldchain.drpc.org",
     },
   },
   contracts: {

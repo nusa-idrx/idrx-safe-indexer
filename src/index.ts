@@ -3,6 +3,7 @@ import { SafeMultiSigTransaction } from "ponder:schema";
 import { decodeAbiParameters, decodeFunctionData } from "viem";
 import { erc20ABI } from "../abis/erc20ABI";
 import { getSafeTransactionHash } from "./helper/getSafeTransactionHash";
+import { getChainName } from "./helper/chainName";
 
 ponder.on("SafeIDRX:SafeMultiSigTransaction", async ({ event, context }) => {
   const values = decodeAbiParameters(
@@ -23,6 +24,7 @@ ponder.on("SafeIDRX:SafeMultiSigTransaction", async ({ event, context }) => {
     console.log("safeTxHash = ", getSafeTransactionHash(event, values[0]));
     await context.db.insert(SafeMultiSigTransaction).values({
       id: event.id,
+      chain: getChainName(context.chain.id),
       to: event.args.to,
       value: event.args.value,
       data: event.args.data,

@@ -1,4 +1,4 @@
-export const Safe = [
+export const SafeABI = [
   {
     anonymous: false,
     inputs: [

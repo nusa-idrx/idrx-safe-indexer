@@ -4,6 +4,7 @@ export const SafeMultiSigTransaction = onchainTable(
   "SafeMultiSigTransaction",
   (t) => ({
     id: t.text().primaryKey(),
+    chain: t.text(),
     to: t.text(),
     value: t.bigint(),
     data: t.text(),

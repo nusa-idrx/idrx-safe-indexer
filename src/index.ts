@@ -4,6 +4,7 @@ import { decodeAbiParameters, decodeFunctionData } from "viem";
 import { erc20ABI } from "../abis/erc20ABI";
 import { getSafeTransactionHash } from "./helper/getSafeTransactionHash";
 import { getChainName } from "./helper/chainName";
+import { timestampFormatter } from "./helper/timestampFormatter";
 
 ponder.on("SafeIDRX:SafeMultiSigTransaction", async ({ event, context }) => {
   const values = decodeAbiParameters(
@@ -41,8 +42,10 @@ ponder.on("SafeIDRX:SafeMultiSigTransaction", async ({ event, context }) => {
       nonce: values[0],
       sender: values[1],
       threshold: values[2],
-      safeTxHash: getSafeTransactionHash(event, values[0]),
       txHash: event.transaction.hash,
+      safeTxHash: getSafeTransactionHash(event, values[0]),
+      timestamp: event.block.timestamp,
+      datetime: timestampFormatter(Number(event.block.timestamp)),
     });
   }
 });

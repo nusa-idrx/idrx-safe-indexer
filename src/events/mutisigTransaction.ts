@@ -1,9 +1,9 @@
 import { decodeAbiParameters, decodeFunctionData } from "viem";
-import { erc20ABI } from "../../abis/erc20ABI";
 import { getChainName } from "../helper/chainName";
 import { timestampFormatter } from "../helper/timestampFormatter";
 import { SafeMultiSigTransaction } from "ponder:schema";
 import { getSafeAddress } from "../helper/getSafeAddress";
+import { erc20ABI } from "../../abis/erc20ABI";
 
 export const handleMultisigTransaction = async (
   event: any,

@@ -4,6 +4,9 @@ import { chain } from "./ponder.chains";
 import { SafeABI } from "./abis/SafeABI";
 
 export function getMainChainConfig() {
+  console.log("admin", chain["world"].contractAddress.admin);
+  console.log("startblock", chain["world"].startBlock);
+  
   const config = {
     database: {
       kind: "postgres" as const,
@@ -40,16 +43,16 @@ export function getMainChainConfig() {
       // },
     },
     contracts: {
-      SafeIDRX: {
+      SafeIDRXStaff: {
         abi: SafeABI,
-        address: [getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53")],
+        address: [getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f")],
         chain: {
           // polygon: {
-          //   address: getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53"),
+          //   address: getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f"),
           //   startBlock: chain["polygon"].startBlock,
           // },
           // bsc: {
-          //   address: getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53"),
+          //   address: getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f"),
           //   startBlock: chain["bsc"].startBlock,
           // },
           // kaia: {
@@ -57,11 +60,11 @@ export function getMainChainConfig() {
           //   startBlock: chain["kaia"].startBlock,
           // },
           // base: {
-          //   address: getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53"),
+          //   address: getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f"),
           //   startBlock: chain["base"].startBlock,
           // },
           world: {
-            address: getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53"),
+            address: getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f"),
             startBlock: chain["world"].startBlock,
           },
           // etherlink: {
@@ -69,9 +72,29 @@ export function getMainChainConfig() {
           //   startBlock: chain["etherlink"].startBlock,
           // },
           // gnosis: {
-          //   address: getAddress("0x546bACCf6498eDCA5dE3519960DB2f576fFc2d53"),
+          //   address: getAddress("0x942ca56d502c08E5F2d5dE7097d4fa667FBC6c5f"),
           //   startBlock: chain["gnosis"].startBlock,
           // },
+        },
+      },
+      SafeIDRXAdmin: {
+        abi: SafeABI,
+        address: [getAddress("0xf80fdF246928B7862B23e094b3a14C4E36eE117E")],
+        chain: {
+          world: {
+            address: getAddress("0xf80fdF246928B7862B23e094b3a14C4E36eE117E"),
+            startBlock: chain["world"].startBlock,
+          },
+        },
+      },
+      SafeIDRXManager: {
+        abi: SafeABI,
+        address: [getAddress("0x3274da26046eED0D315a81050507FF07D3993eb4")],
+        chain: {
+          world: {
+            address: getAddress("0x3274da26046eED0D315a81050507FF07D3993eb4"),
+            startBlock: chain["world"].startBlock,
+          },
         },
       },
     },
